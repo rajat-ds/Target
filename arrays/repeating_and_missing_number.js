@@ -55,19 +55,23 @@ x-y = S – (1)
 x^2 – y^2 = Sum_sq 
 x+ y = (Sum_sq/S) – (2) 
    */
-
-const missingAndRepeating =(arr)=>{
-    const len = arr.length;
-    let sum = (len*(len+1))/2;
-    let sqaueSum = (len*(len+1)*(2*len+1))/6;
-    let ans={}
-    arr.forEach((val,index)=>{
-        sum-=val;
-        sqaueSum-=val*val;
-    })
-    ans["missing"]= (sum + sqaueSum/sum)/2;
-    ans["repeating"] = ans.missing -sum;
-    return ans;
-
-}
+/**
+ * Find the missing and repeating number
+ * @param {Array} arr 
+ * @returns obj
+ * @author Rajat Kumar
+ */
+const missingAndRepeating = (arr) => {
+  const len = arr.length;
+  let sum = (len * (len + 1)) / 2;
+  let sqaueSum = (len * (len + 1) * (2 * len + 1)) / 6;
+  let ans = {};
+  arr.forEach((val, index) => {
+    sum -= val;
+    sqaueSum -= val * val;
+  });
+  ans["missing"] = (sum + sqaueSum / sum) / 2;
+  ans["repeating"] = ans.missing - sum;
+  return ans;
+};
   console.log(missingAndRepeating(arr));
