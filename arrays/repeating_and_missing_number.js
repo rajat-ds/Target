@@ -39,4 +39,35 @@ every element as an index and make the value at this index as negative to mark i
     });
   };
   const arr = [7, 3, 4, 5, 5, 6, 2];
-  printMissingRepeating(arr);
+  //printMissingRepeating(arr);
+
+
+  /**
+Let x be the missing and y be the repeating element.
+Let N is the size of array.
+Get the sum of all numbers using formula S = N(N+1)/2
+Get the sum of square of all numbers using formula Sum_Sq = N(N+1)(2N+1)/6
+Iterate through a loop from i=1….N
+S -= A[i]
+Sum_Sq -= (A[i]*A[i])
+It will give two equations 
+x-y = S – (1) 
+x^2 – y^2 = Sum_sq 
+x+ y = (Sum_sq/S) – (2) 
+   */
+
+const missingAndRepeating =(arr)=>{
+    const len = arr.length;
+    let sum = (len*(len+1))/2;
+    let sqaueSum = (len*(len+1)*(2*len+1))/6;
+    let ans={}
+    arr.forEach((val,index)=>{
+        sum-=val;
+        sqaueSum-=val*val;
+    })
+    ans["missing"]= (sum + sqaueSum/sum)/2;
+    ans["repeating"] = ans.missing -sum;
+    return ans;
+
+}
+  console.log(missingAndRepeating(arr));
