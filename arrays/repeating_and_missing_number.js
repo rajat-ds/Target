@@ -39,7 +39,7 @@ every element as an index and make the value at this index as negative to mark i
     });
   };
   const arr = [7, 3, 4, 5, 5, 6, 2];
-  //printMissingRepeating(arr);
+  // printMissingRepeating(arr);
 
 
   /**
@@ -74,4 +74,4 @@ const missingAndRepeating = (arr) => {
   ans["repeating"] = ans.missing - sum;
   return ans;
 };
-  console.log(missingAndRepeating(arr));
+  // console.log(missingAndRepeating(arr));

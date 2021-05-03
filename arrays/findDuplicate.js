@@ -22,7 +22,7 @@
  * @author Rajat Kumar
  */
 const findDuplicate = function (nums) {
-  let slow = nums[0],
+    let slow = nums[0],
     fast = nums[nums[0]];
 
   //here fast moves two steps at a time
