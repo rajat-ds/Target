@@ -35,23 +35,3 @@
 
  }
 //  mergeIntervals(arr)
-
-
-const sum=(n)=>{
-    let last = 1;
-    let secLast = 0;
-    let sum = 1;
-    
-    
-    for(let i=2;i<=n;i++){
-           let curSum = last +secLast;
-           sum+=curSum;
-           secLast=last;
-           last=curSum;
-    
-    }
-    return sum;
-}
-
-console.log("sum",sum(10))
-
