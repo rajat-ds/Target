@@ -3,35 +3,26 @@
  *and return an array of the non-overlapping intervals that cover all the intervals in the input.
  */
 
- const arr = [[1,4],[4,5]]
-
+ const arr = [[1,3],[2,6],[8,10],[15,18]]
+console.log("arr-->",arr)
  /**
   * @param {number[][]} arr 
   * @returns {number[][]} 
   * @author Rajat Kumar
   */
  const mergeIntervals=(arr)=>{
-     arr.sort((a,b)=> a[0]-b[0])
-     let pair=arr[0] ,ans=[],last=[];
-     arr.forEach(val=>{
-            last =val;
-           if(pair[1]>=val[0]){
-                  pair[1]=val[1]
-           }else if(pair[1]>val[1]){
-                  
-           }
-               else{
-               ans.push(pair)
-               pair=val;
-             
-           }
-        })
-        if(pair[1]>last[0])
-            pair[1]=last[1]
-       ans.push(pair)
-
-
-     console.log(ans)
+    if(!arr.length) return [];
+    arr.sort((a, b) => a[0] - b[0]);
+    
+    const result = [arr[0]];
+    
+    for(let [start, end] of arr) {
+        if(start <= result[result.length - 1][1]) {
+            const [startPrev, endPrev] = result.pop();
+            result.push([startPrev, Math.max(end, endPrev)]);
+        } else result.push([start, end]);
+    }
+    return result;
 
  }
-//  mergeIntervals(arr)
+console.log(mergeIntervals(arr))
