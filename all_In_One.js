@@ -1,5 +1,5 @@
 const findDuplicate = function (nums) {
-    let slow = nums[0],
+  let slow = nums[0],
     fast = nums[nums[0]];
 
   //here fast moves two steps at a time
@@ -17,162 +17,139 @@ const findDuplicate = function (nums) {
   return slow;
 };
 
-
 const maxSubArray = (arr) => {
-    let max = arr[0];
-    sum = 0;
-    arr.forEach((val) => {
-      sum += val;
-      max = Math.max(max, sum);
-      if (sum < 0) {
-        sum = 0;
-      }
-    });
-  
-    return max;
-  };
-
-
-
-  const maxProduct = function (nums) {
-    if (!nums && !nums.length) return nums;
-  
-    const n = nums.length;
-  
-    let prevMax = nums[0];
-    let prevMin = nums[0];
-    let maxSoFar = nums[0];
-  
-    for (let i = 1; i < n; i++) {
-      // choices: 1) prevMax * nums[i], 2) nums[i], 3) prevMin * nums[i]
-      let localMax = Math.max(prevMax * nums[i], nums[i], prevMin * nums[i]);
-      let localMin = Math.min(prevMax * nums[i], nums[i], prevMin * nums[i]);
-  
-      // max and min could have swapped
-      prevMax = Math.max(localMax, localMin);
-      prevMin = Math.min(localMax, localMin);
-  
-      maxSoFar = Math.max(maxSoFar, prevMax);
+  let max = arr[0];
+  sum = 0;
+  arr.forEach((val) => {
+    sum += val;
+    max = Math.max(max, sum);
+    if (sum < 0) {
+      sum = 0;
     }
-  
-    return maxSoFar;
-  };
-  
+  });
 
-const mergeSortedArrayInsertion = (arr1, arr2) => {
-    arr1.forEach((element, index) => {
-        let temp = 0;
-        if (element > arr2[0]) {
-            temp = element;
-            arr1[index] = arr2[0]
-            arr2[0] = temp;
-            arr2.sort((a, b) => a - b);
-        }
-
-    })
-
-    return { arr1, arr2 }
-
-}
-
-
-const mergeIntervals=(arr)=>{
-    if(!arr.length) return [];
-    arr.sort((a, b) => a[0] - b[0]);
-    
-    const result = [arr[0]];
-    
-    for(let [start, end] of arr) {
-        if(start <= result[result.length - 1][1]) {
-            const [startPrev, endPrev] = result.pop();
-            result.push([startPrev, Math.max(end, endPrev)]);
-        } else result.push([start, end]);
-    }
-    return result;
-
- }
-
-
- const missingAndRepeating = (arr) => {
-    const len = arr.length;
-    let sum = (len * (len + 1)) / 2;
-    let sqaueSum = (len * (len + 1) * (2 * len + 1)) / 6;
-    let ans = {};
-    arr.forEach((val, index) => {
-      sum -= val;
-      sqaueSum -= val * val;
-    });
-    ans["missing"] = (sum + sqaueSum / sum) / 2;
-    ans["repeating"] = ans.missing - sum;
-    return ans;
-  };
-
-
-  const sort_0_1_2 = function(nums) {
-    let low = 0,
-        high = nums.length - 1,
-        temp;
-    
-    for (let mid = 0; mid<= high; ) {
-        if (nums[mid] === 0) {
-            temp = nums[mid];
-            nums[mid] = nums[low];
-            nums[low] = temp;
-            mid++;
-            low++;
-        } else if (nums[mid] == 2) {
-            temp = nums[mid];
-            nums[mid] = nums[high];
-            nums[high] = temp;
-            high--;
-        } else {
-            mid++;
-        }
-    }
-    return nums ;
+  return max;
 };
 
+const maxProduct = function (nums) {
+  if (!nums && !nums.length) return nums;
+
+  const n = nums.length;
+
+  let prevMax = nums[0];
+  let prevMin = nums[0];
+  let maxSoFar = nums[0];
+
+  for (let i = 1; i < n; i++) {
+    // choices: 1) prevMax * nums[i], 2) nums[i], 3) prevMin * nums[i]
+    let localMax = Math.max(prevMax * nums[i], nums[i], prevMin * nums[i]);
+    let localMin = Math.min(prevMax * nums[i], nums[i], prevMin * nums[i]);
+
+    // max and min could have swapped
+    prevMax = Math.max(localMax, localMin);
+    prevMin = Math.min(localMax, localMin);
+
+    maxSoFar = Math.max(maxSoFar, prevMax);
+  }
+
+  return maxSoFar;
+};
+
+const mergeSortedArrayInsertion = (arr1, arr2) => {
+  arr1.forEach((element, index) => {
+    let temp = 0;
+    if (element > arr2[0]) {
+      temp = element;
+      arr1[index] = arr2[0];
+      arr2[0] = temp;
+      arr2.sort((a, b) => a - b);
+    }
+  });
+
+  return { arr1, arr2 };
+};
+
+const mergeIntervals = (arr) => {
+  if (!arr.length) return [];
+  arr.sort((a, b) => a[0] - b[0]);
+
+  const result = [arr[0]];
+
+  for (let [start, end] of arr) {
+    if (start <= result[result.length - 1][1]) {
+      const [startPrev, endPrev] = result.pop();
+      result.push([startPrev, Math.max(end, endPrev)]);
+    } else result.push([start, end]);
+  }
+  return result;
+};
+
+const missingAndRepeating = (arr) => {
+  const len = arr.length;
+  let sum = (len * (len + 1)) / 2;
+  let sqaueSum = (len * (len + 1) * (2 * len + 1)) / 6;
+  let ans = {};
+  arr.forEach((val, index) => {
+    sum -= val;
+    sqaueSum -= val * val;
+  });
+  ans["missing"] = (sum + sqaueSum / sum) / 2;
+  ans["repeating"] = ans.missing - sum;
+  return ans;
+};
+
+const sort_0_1_2 = function (nums) {
+  let low = 0,
+    high = nums.length - 1,
+    temp;
+
+  for (let mid = 0; mid <= high; ) {
+    if (nums[mid] === 0) {
+      temp = nums[mid];
+      nums[mid] = nums[low];
+      nums[low] = temp;
+      mid++;
+      low++;
+    } else if (nums[mid] == 2) {
+      temp = nums[mid];
+      nums[mid] = nums[high];
+      nums[high] = temp;
+      high--;
+    } else {
+      mid++;
+    }
+  }
+  return nums;
+};
 
 const minimumAdjacentDifference = (arr, k) => {
-    let minDiff = 9999999;
-    for (let i = 0; i <= k; i++) {
-      let maxDiff = -999999;
-      for (let j = 0; j < arr.length - k - 1; j++) {
-        for (let p = i; p <= i + j; p++) {
-          maxDiff = Math.max(arr[p + 1] - arr[p], maxDiff);
-        }
+  let minDiff = 9999999;
+  for (let i = 0; i <= k; i++) {
+    let maxDiff = -999999;
+    for (let j = 0; j < arr.length - k - 1; j++) {
+      for (let p = i; p <= i + j; p++) {
+        maxDiff = Math.max(arr[p + 1] - arr[p], maxDiff);
       }
-      minDiff = Math.min(maxDiff, minDiff);
     }
-  
-    return minDiff;
-  };
+    minDiff = Math.min(maxDiff, minDiff);
+  }
 
+  return minDiff;
+};
 
-  var setZeroes = function(matrix) {
-    let Col = false;
-    for(let i =0 ; i<matrix.length ;i++){
-        if(matrix[i][0]==0)
-            Col = true;
-        for(let j =1 ;j<matrix[0].length ; j++){
-            if(matrix[i][j]===0)
-                matrix[i][0]=matrix[0][j]=0;
-        }
+var setZeroes = function (matrix) {
+  let Col = false;
+  for (let i = 0; i < matrix.length; i++) {
+    if (matrix[i][0] == 0) Col = true;
+    for (let j = 1; j < matrix[0].length; j++) {
+      if (matrix[i][j] === 0) matrix[i][0] = matrix[0][j] = 0;
     }
-     
-    for( let i = matrix.length-1 ;i>=0 ; i--){
-        for(let j = matrix[0].length -1 ;j>=1 ;j--){
-             if(!matrix[i][0] || !matrix[0][j])
-                 matrix[i][j]=0;
-            
-            
-        }
-        if(Col)
-            matrix[i][0]=0;
-        
-        
-    } 
-     
-     
-     
- };
+  }
+
+  for (let i = matrix.length - 1; i >= 0; i--) {
+    for (let j = matrix[0].length - 1; j >= 1; j--) {
+      if (!matrix[i][0] || !matrix[0][j]) matrix[i][j] = 0;
+    }
+    if (Col) matrix[i][0] = 0;
+  }
+};
