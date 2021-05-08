@@ -16,7 +16,7 @@ const matrix =
     }
      
     for( let i = matrix.length-1 ;i>=0 ; i--){
-        for(let j = matrix[0].length -1 ;j>=0 ;j--){
+        for(let j = matrix[0].length -1 ;j>=1 ;j--){
              if(!matrix[i][0] || !matrix[0][j])
                  matrix[i][j]=0;
             
