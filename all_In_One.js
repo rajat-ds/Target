@@ -240,3 +240,19 @@ const rotate = function (matrix) {
     }
   }
 };
+
+const searchMatrix2 = (matrix, target) => {
+  if (!matrix.length || !matrix[0].length) return false;
+  let row = matrix.length;
+  let col = matrix[0].length;
+  let left = 0;
+  let right = row * col - 1;
+  if (!matrix.length || !matrix[0].length) return false;
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    if (target == matrix[Math.floor(mid / col)][mid % col]) return true;
+    if (target > matrix[Math.floor(mid / col)][mid % col]) left = mid + 1;
+    else right = mid - 1;
+  }
+  return false;
+};
