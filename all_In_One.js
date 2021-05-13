@@ -275,3 +275,14 @@ const pow = (x, n) => {
 
   return ans;
 };
+
+var majorityElement = function(nums) {
+  let count = 0;
+  let ele = 0 ;
+  nums.forEach(val=>{
+      if(count===0) ele = val
+      if(val===ele) count++;
+      else count--;
+  })
+  return ele;
+};
