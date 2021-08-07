@@ -361,3 +361,18 @@ const longestSequence = (list) => {
   }
   return longestStreak;
 };
+
+const largestSubArrayWithZeroSUM = (list) => {
+  const map = new Map();
+  let max = 0;
+  let sum = 0;
+  for (let i = 0; i < list.length; i++) {
+    if (!(sum += list[i])) max = i + 1;
+    else if (map.has(sum)) {
+      max = Math.max(max, i - map.get(sum));
+    } else {
+      map.set(sum, i);
+    }
+  }
+  return max;
+};
