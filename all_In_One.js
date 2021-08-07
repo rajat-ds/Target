@@ -376,3 +376,16 @@ const largestSubArrayWithZeroSUM = (list) => {
   }
   return max;
 };
+
+const twoSumProblem = (list, target) => {
+  let result = [];
+  let map = new Map();
+  for (let i = 0; i < list.length; i++) {
+    if (map.has(target - list[i])) {
+      result.push(map.get(target - list[i]));
+      result.push(i);
+      break;
+    } else  map.set(list[i], i); 
+  }
+  return result;
+};
