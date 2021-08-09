@@ -29,3 +29,13 @@ const helper = (m, n, row, col, memo) => {
   return memo[row][col];
 };
 console.log(uniquePaths(3, 7));
+const optimizeUniquePath = (m, n) => {
+  let N = m + n - 2;
+  let r = m - 1;
+  let res = 1;
+  for (let i = 1; i <= r; i++) {
+    res = (res * (N - r + i)) / i;
+  }
+  return res;
+};
+console.log(optimizeUniquePath(3, 7));
