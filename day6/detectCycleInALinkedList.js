@@ -7,7 +7,7 @@
  */
 
 /**
- * @param {ListNode} headA
+ * @param {ListNode} headA1
  * @param {ListNode} headB
  * @return {ListNode}
  */
