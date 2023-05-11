@@ -8,7 +8,7 @@
 
 /**
  * @param {ListNode} headA1
- * @param {ListNode} headB
+ * @param {ListNode} headB2
  * @return {ListNode}
  */
 var getIntersectionNode = function (headA, headB) {
