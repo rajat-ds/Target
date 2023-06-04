@@ -451,3 +451,61 @@ const optimizeUniquePath = (m, n) => {
   }
   return res;
 };
+
+//++++++++++++++++++++++ Check For Anagram +++++++++++++++++++//
+
+var isAnagram = function(s, t) {
+  if(s.length !== t.length) return false
+  let map =  new Map()
+  for( let i = 0 ; i <s.length ;i++){
+      if( map.has( s[i] ) ) map.set(s[i] , map.get( s[i] ) + 1 )
+      else map.set(s[i] , 1 )
+  }
+  
+  for( let i =0  ; i < s.length ;i++){
+      if( !(map.has(t[i])  && map.get( t[i] ) > 0)  ) return false
+      else if( (map.has(t[i]) ) )  map.set(t[i], map.get( t[i]) - 1 )
+  }
+  return true
+};
+
+//++++++++++++++++++++++ Count And Say +++++++++++++++++++++++//
+
+
+var countAndSay = function(n) {
+  if( n ===1 ) return "1";
+  else if ( n===2) return '11'
+  let s = '11'
+  for(let i = 3 ; i <=n ;i++ ){
+      let t = ""
+       s+='&'
+      let count =1 
+      for( let j = 1 ; j < s.length ; j++ ){
+          if(s[j] !== s[j-1]){
+              t = t + count
+              t+=s[j-1]
+              count = 1
+          }else
+              count++
+      }
+      s = t ;
+  }
+  
+  return s
+};
+
+
+//++++++++++++++++++++ Compare Versions +++++++++++++++++++++//
+
+var compareVersion = function(version1, version2) {
+  let v1 = version1.split('.')
+  let v2 = version2.split('.')
+  let maxLen = Math.max(v1.length,v2.length)
+  for(let i = 0 ; i < maxLen ; i++ ){
+      let num1 = i < v1.length ? Number(v1[i]) : 0 ;
+      let num2 = i < v2.length ? Number(v2[i]) : 0 ;   
+      if( num1 > num2 ) return 1
+      else if( num2 > num1 ) return -1
+  }
+  return 0
+};
