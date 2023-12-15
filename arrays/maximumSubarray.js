@@ -1,13 +1,13 @@
 /**
- * Given an integer array nums, 
+ * Given an integer array nums,
  * find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
  */
 
-const arr = [-2,1,-3,4,-1,2,1,-5,4]
+const arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 
 /**
  * Niave Approach
- * @param {Array} arr 
+ * @param {Array} arr
  * @returns maxim sum of subarray
  */
 const maxSubArrayNaive = (arr) => {
@@ -31,8 +31,8 @@ const maxSubArrayNaive = (arr) => {
 // console.log("Max Sum",maxSubArrayNaive(arr))
 /**
  * Kadane Algorithm
- * @param {Array} arr 
- * @returns maximum sum of sub Array 
+ * @param {Array} arr
+ * @returns maximum sum of sub Array
  */
 const maxSubArray = (arr) => {
   let max = arr[0];
@@ -48,4 +48,4 @@ const maxSubArray = (arr) => {
   return max;
 };
 
-console.log("max Sum-->",maxSubArray(arr) )
+console.log("max Sum-->", maxSubArray(arr));

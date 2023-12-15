@@ -11,11 +11,11 @@
  * @param {ListNode} headB
  * @return {ListNode}
  */
- var getIntersectionNode = function(headA, headB) {
-    let [l1,l2] = [headA,headB]
-    while(l1!=l2){
-        l1 = !l1?headB:l1.next;
-        l2 = !l2?headA:l2.next;
-    }
-    return l1
+var getIntersectionNode = function (headA, headB) {
+  let [l1, l2] = [headA, headB];
+  while (l1 != l2) {
+    l1 = !l1 ? headB : l1.next;
+    l2 = !l2 ? headA : l2.next;
+  }
+  return l1;
 };

@@ -9,7 +9,7 @@ const twoSumProblem = (list, target) => {
       result.push(map.get(target - list[i]));
       result.push(i);
       break;
-    } else  map.set(list[i], i); 
+    } else map.set(list[i], i);
   }
   return result;
 };

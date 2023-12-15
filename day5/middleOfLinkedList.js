@@ -5,10 +5,6 @@
  *     this.next = (next===undefined ? null : next)
  * }
  */
-/**
- * @param {ListNode} head
- * @return {ListNode}
- */
 var middleNode = function (head) {
   let slow = head;
   let fast = head;

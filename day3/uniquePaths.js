@@ -18,17 +18,15 @@ var uniquePaths = function (m, n) {
 const helper = (m, n, row, col, memo) => {
   if (row === m - 1 && col === n - 1) return 1;
   if (row >= m || col >= n) return 0;
-
   if (memo[row][col] === -1) {
     const pathsRight = helper(m, n, row, col + 1, memo);
     const pathsDown = helper(m, n, row + 1, col, memo);
 
     memo[row][col] = pathsRight + pathsDown;
   }
-
   return memo[row][col];
 };
-console.log(uniquePaths(3, 7));
+
 const optimizeUniquePath = (m, n) => {
   let N = m + n - 2;
   let r = m - 1;

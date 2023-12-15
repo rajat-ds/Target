@@ -2,7 +2,6 @@
 
 // There is only one repeated number in nums, return this repeated number.
 
-
 // Naive  approach sort the array
 // duplicate-> a[i]===a[i+1]
 // O(nlogn)
@@ -22,16 +21,14 @@
  * @author Rajat Kumar
  */
 const findDuplicate = function (nums) {
-    let slow = nums[0],
+  let slow = nums[0],
     fast = nums[nums[0]];
-
   //here fast moves two steps at a time
   while (slow !== fast) {
     slow = nums[slow];
     fast = nums[nums[fast]];
   }
   fast = 0;
-
   //here fast move one step at a time
   while (slow !== fast) {
     slow = nums[slow];

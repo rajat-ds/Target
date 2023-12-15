@@ -11,8 +11,6 @@ const printPascalTriangle = (n) => {
   return ans;
 };
 
-// console.log(printPascalTriangle(5));
-
 // Given an integer rowIndex, return the rowIndexth (0-indexed) row of the Pascal's triangle.
 
 const printPascalTriangle2 = (n) => {

@@ -42,4 +42,4 @@ function mergeSortAndCount(arr, l, r) {
 
 let arr = [1, 20, 6, 4, 5];
 console.log(mergeSortAndCount(arr, 0, arr.length - 1));
-console.log(arr)
+console.log(arr);

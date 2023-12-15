@@ -1,7 +1,6 @@
-
 /**
- * @param {number} x 
- * @param {number} n 
+ * @param {number} x
+ * @param {number} n
  * @returns {number} ans
  * @author Rajat Kumar
  */

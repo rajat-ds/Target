@@ -7,15 +7,16 @@
  */
 
 /**
- * @param {ListNode} headA1
- * @param {ListNode} headB2
- * @return {ListNode}
+ * @param {ListNode} head
+ * @return {boolean}
  */
-var getIntersectionNode = function (headA, headB) {
-  let [l1, l2] = [headA, headB];
-  while (l1 != l2) {
-    l1 = !l1 ? headB : l1.next;
-    l2 = !l2 ? headA : l2.next;
+var hasCycle = function (head) {
+  let slow = head;
+  let fast = head;
+  while (fast && fast.next && fast.next.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (slow == fast) return true;
   }
-  return l1;
+  return false;
 };
