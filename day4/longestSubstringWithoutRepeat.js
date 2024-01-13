@@ -10,7 +10,7 @@ var lengthOfLongestSubstring = function (s) {
   let len = 0;
   let n = s.length;
   while (right < n) {
-    if (map1.has(s[right])) left = Math.max(left, map1.get(s[right]) + 1);
+    if (map1.has(s[right])) left = Math.max(left, map1.get(s[right]) + 1); // left has already crosseds s[right]
     map1.set(s[right], right);
     len = Math.max(len, right - left + 1);
     right++;
