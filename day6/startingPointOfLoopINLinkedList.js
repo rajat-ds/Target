@@ -2,6 +2,13 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+
+// l1 ditance travel by slow before entering loop
+// l2 distance travel by slow after enterting toop
+// l1  + l2 dist travel by slow
+// l1 + l2 + nc dist ravel by fast
+// 2 (l1 + l2 ) = l1 + l2 +nc
+// l1 = nc - l2
 var detectCycle = function (head) {
   if (!head || !head.next) return null;
 
