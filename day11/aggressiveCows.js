@@ -1,6 +1,6 @@
 // n is length of stall 
 // k is number of cow
-agressiveCow = (n, k, stalls) => {
+const agressiveCow = (n, k, stalls) => {
   stalls.sort((a, b) => a - b);
   //Function to count the number of stalls that can be allocated with distance d.
   function count(d) {
