@@ -18,3 +18,19 @@ const permuation = (arr, ds, ans, mark) => {
     ds.pop();
   }
 };
+
+const optimizePermuation = (index, arr, ans) => {
+  if (index === arr.length) {
+    ans.push([...arr]);
+    return;
+  }
+  for (let i = index; i < arr.length; i++) {
+    let temp = arr[i];
+    arr[i] = arr[index];
+    arr[index] = temp;
+    permuation(index + 1, arr, ans);
+    temp = arr[i];
+    arr[i] = arr[index];
+    arr[index] = temp;
+  }
+};
