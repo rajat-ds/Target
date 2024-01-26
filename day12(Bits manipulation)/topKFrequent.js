@@ -44,3 +44,7 @@ const buildHeap = (arr) => {
     maxHeapify(arr, i, heapLength);
   }
 };
+
+let nums = [1,1,1,2,2,3]
+let ans = topKFrequent(nums,2)
+console.log(ans)  // ) [1, 2]
