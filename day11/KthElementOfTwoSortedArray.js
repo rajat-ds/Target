@@ -1,4 +1,4 @@
-kthElement(A,B,n,m,k){ 
+function kthElement(A,B,n,m,k){ 
     //code here
     if( n > m ) {
         [ A, B ] = [B ,A ]
