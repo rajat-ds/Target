@@ -23,7 +23,6 @@ const solve = ( col , board , ans , n , rowMark ,lowerDiagonal,upperDiagonal   )
                  newBoard[i] = [...board[i]].join("")
          }
             ans.push(newBoard)
-  
             return
         }
     for( let row = 0 ; row < n ; row++ ){
