@@ -15,7 +15,7 @@ var removeNthFromEnd = function (head, n) {
     fast = fast.next;
     slow = slow.next;
   }
-  if (!fast) {
+  if (!fast) { //[1]
     start = start.next;
   } else {
     slow.next = slow.next ? slow.next.next : null;
