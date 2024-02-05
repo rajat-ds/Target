@@ -29,5 +29,5 @@ var isValid = function (s) {
         break;
     }
   }
-  return stacks.length == 0;
+  return stacks.length === 0;
 };
