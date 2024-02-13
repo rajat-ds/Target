@@ -14,31 +14,36 @@ var LRUCache = function (capacity) {
   this.tail = new node();
   this.head.next = this.tail;
   this.tail.prev = this.head;
-
-  this.head;
 };
 
 /**
  * @param {number} key
  * @return {number}
  */
+LRUCache.prototype.remove = function (nod) {
+  let prev = nod.prev;
+  let next = nod.next;
+  prev.next = next;
+  next.prev = prev;
+};
+
+// insert in front
+LRUCache.prototype.insert = function (temp) {
+  let nodeAfterHead = this.head.next;
+  this.head.next = temp;
+  temp.prev = this.head;
+  temp.next = nodeAfterHead;
+  nodeAfterHead.prev = temp;
+};
+
 LRUCache.prototype.get = function (key1) {
   if (this.map.get(key1)) {
     let nod = this.map.get(key1);
     let { key, value } = nod.val;
-    let prev = nod.prev;
-    let next = nod.next;
-    prev.next = next;
-    next.prev = prev;
+    this.remove(nod); //remove the already existing one
 
-    let nodeAfterHead = this.head.next;
     let temp = new node({ key, value });
-
-    this.head.next = temp;
-    temp.prev = this.head;
-    temp.next = nodeAfterHead;
-    nodeAfterHead.prev = temp;
-    this.map.delete(key1);
+    this.insert(temp); // insert in front
     this.map.set(key1, temp);
 
     return value;
@@ -56,39 +61,27 @@ LRUCache.prototype.put = function (key1, value) {
   let temp = new node({ key: key1, value });
   if (this.map.get(key1)) {
     let nod = this.map.get(key1);
-    let prev = nod.prev;
-    let next = nod.next;
-    prev.next = next;
-    next.prev = prev;
+    this.remove(nod); //remove the already existing one
 
-    let nodeAfterHead = this.head.next;
-
-    this.head.next = temp;
-    temp.prev = this.head;
-    temp.next = nodeAfterHead;
-    nodeAfterHead.prev = temp;
-
+    this.insert(temp);  // insert in front
     this.map.set(key1, temp);
   } else if (this.map.size === this.capacity) {
     let delNode = this.tail.prev;
     let { key, value } = delNode.val;
     this.map.delete(key);
-    let prev = this.tail.prev.prev;
-    prev.next = this.tail;
-    this.tail.prev = prev;
+    this.remove(delNode); // remove the last one
 
-    let nodeAfterHead = this.head.next;
-    this.head.next = temp;
-    temp.prev = this.head;
-    temp.next = nodeAfterHead;
-    nodeAfterHead.prev = temp;
+    this.insert(temp);   // insert in front
     this.map.set(key1, temp);
   } else {
-    let nodeAfterHead = this.head.next;
-    this.head.next = temp;
-    temp.prev = this.head;
-    temp.next = nodeAfterHead;
-    nodeAfterHead.prev = temp;
+    this.insert(temp);  // insert in front
     this.map.set(key1, temp);
   }
 };
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * var obj = new LRUCache(capacity)
+ * var param_1 = obj.get(key)
+ * obj.put(key,value)
+ */
